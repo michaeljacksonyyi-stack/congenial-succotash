@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Arshad Khan — Construction Builder based in Shabqadar, Peshawar. Residential & commercial construction, renovation, and site supervision.">
+<title>Arshad Khan — Construction Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#1E1B17;
+    --charcoal-2:#28241F;
+    --charcoal-3:#322D26;
+    --sand:#EAE2CE;
+    --sand-2:#DCD0B2;
+    --orange:#D85A29;
+    --steel:#4A6B7C;
+    --steel-light:#8FB2C2;
+    --cream:#F4EFE1;
+    --ink:#221F1A;
+    --muted:#9C9483;
+    --muted-2:#71695A;
+    --line-dark:#3B362F;
+    --line-light:#C9BC9C;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--charcoal); color:var(--cream); font-family:'Inter', sans-serif; overflow-x:hidden; }
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img,svg{display:block;}
+
+  .wrap{ max-width:1080px; margin:0 auto; }
+
+  .eyebrow{
+    font-family:'Oswald', sans-serif;
+    font-size:0.74rem;
+    font-weight:500;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--orange);
+  }
+
+  /* ---------- Corner crop marks (signature element) ---------- */
+  .crop{ position:relative; }
+  .crop::before, .crop::after{ content:""; position:absolute; width:16px; height:16px; }
+  .crop::before{ top:-9px; left:-9px; border-top:2px solid var(--orange); border-left:2px solid var(--orange); }
+  .crop::after{ bottom:-9px; right:-9px; border-bottom:2px solid var(--orange); border-right:2px solid var(--orange); }
+  .crop.on-light::before, .crop.on-light::after{ border-color:var(--steel); }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 7vw;
+    background:rgba(30,27,23,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav-brand{ display:flex; align-items:center; gap:12px; }
+  .nav-mark{
+    width:34px; height:34px;
+    border:1.5px solid var(--orange);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Archivo Black', sans-serif; font-size:0.85rem; color:var(--orange);
+    flex-shrink:0;
+  }
+  .nav-name{ font-family:'Oswald', sans-serif; font-size:0.86rem; letter-spacing:0.05em; }
+  .nav-name small{ display:block; font-family:'JetBrains Mono', monospace; font-size:0.62rem; color:var(--muted); letter-spacing:0.1em; margin-top:1px; }
+  .nav-links{ display:flex; align-items:center; gap:30px; }
+  .nav-links a:not(.btn){
+    font-family:'Oswald', sans-serif; font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--muted); transition:color 0.15s ease;
+  }
+  .nav-links a:not(.btn):hover{ color:var(--cream); }
+  @media (max-width:760px){ .nav-links a:not(.btn){ display:none; } }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    font-family:'Oswald', sans-serif; font-weight:500; letter-spacing:0.04em; text-transform:uppercase;
+    font-size:0.86rem; padding:13px 24px; border-radius:2px;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+  }
+  .btn:focus-visible{ outline:2px solid var(--orange); outline-offset:3px; }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--orange); color:var(--cream); }
+  .btn-secondary{ background:transparent; border:1.5px solid var(--muted-2); color:var(--cream); }
+  .btn-secondary:hover{ border-color:var(--orange); }
+  .btn-whatsapp{ background:#25D366; color:#0E2A1A; border:none; }
+  .btn-whatsapp:hover{ background:#1FBF5C; }
+  .cta-group{ display:flex; gap:14px; flex-wrap:wrap; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; padding:9vh 7vw 11vh 7vw;
+    background:
+      linear-gradient(rgba(244,239,225,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,239,225,0.045) 1px, transparent 1px),
+      var(--charcoal);
+    background-size:42px 42px, 42px 42px, auto;
+    border-bottom:4px double var(--line-dark);
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.3fr 0.9fr; gap:60px; align-items:center; max-width:1080px; margin:0 auto; }
+  @media (max-width:860px){ .hero-grid{ grid-template-columns:1fr; gap:48px; } }
+
+  .status-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.06em;
+    color:var(--steel-light); border:1px solid var(--line-dark); padding:6px 12px; margin-bottom:22px;
+  }
+  .status-pill .dot{ width:7px; height:7px; border-radius:50%; background:var(--orange); }
+
+  .hero h1{
+    font-family:'Archivo Black', sans-serif; font-size:clamp(2.6rem, 7vw, 4.6rem);
+    line-height:0.96; letter-spacing:-0.01em; margin:14px 0 6px 0; color:var(--cream);
+  }
+  .hero .role{
+    font-family:'Oswald', sans-serif; font-weight:500; font-size:clamp(1.05rem, 2.6vw, 1.35rem);
+    letter-spacing:0.04em; text-transform:uppercase; color:var(--steel-light); margin-bottom:20px;
+  }
+  .hero .tagline{ font-size:1.02rem; line-height:1.65; color:var(--muted); max-width:48ch; margin-bottom:32px; }
+
+  .titleblock{
+    background:var(--charcoal-2); border:1px solid var(--line-dark); padding:26px;
+  }
+  .tb-head{ font-family:'JetBrains Mono', monospace; font-size:0.65rem; letter-spacing:0.14em; color:var(--muted-2); text-transform:uppercase; padding-bottom:14px; border-bottom:1px solid var(--line-dark); margin-bottom:14px; }
+  .tb-row{ display:flex; justify-content:space-between; gap:16px; padding:10px 0; border-bottom:1px solid var(--line-dark); }
+  .tb-row:last-child{ border-bottom:none; }
+  .tb-row span{ font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.1em; color:var(--muted-2); text-transform:uppercase; padding-top:2px; }
+  .tb-row strong{ font-family:'JetBrains Mono', monospace; font-size:0.82rem; color:var(--cream); text-align:right; font-weight:500; }
+  .tb-row strong.status{ color:var(--orange); }
+
+  /* ---------- ABOUT + SERVICES (light) ---------- */
+  .light-section{ background:var(--sand); color:var(--ink); padding:13vh 7vw; }
+  .section-head{ max-width:640px; margin:0 auto 54px auto; text-align:left; }
+  .section-head h2{ font-family:'Archivo Black', sans-serif; font-size:clamp(1.7rem, 4vw, 2.3rem); margin-top:10px; line-height:1.15; }
+  .light-section .eyebrow{ color:var(--steel); }
+
+  .about-row{ max-width:920px; margin:0 auto 70px auto; }
+  .about-row p{ font-size:1.12rem; line-height:1.75; color:var(--ink); max-width:62ch; }
+
+  .services-grid{ max-width:920px; margin:0 auto; display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line-light); border:1px solid var(--line-light); }
+  @media (max-width:760px){ .services-grid{ grid-template-columns:1fr; } }
+  .service-card{ background:var(--sand); padding:32px 28px; }
+  .service-card svg{ width:26px; height:26px; color:var(--steel); margin-bottom:20px; }
+  .service-card h3{ font-family:'Oswald', sans-serif; font-size:1.02rem; letter-spacing:0.02em; text-transform:uppercase; margin-bottom:10px; }
+  .service-card p{ font-size:0.94rem; line-height:1.6; color:var(--muted-2); }
+
+  /* ---------- PROCESS (dark) ---------- */
+  .process{
+    background:
+      linear-gradient(rgba(244,239,225,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,239,225,0.04) 1px, transparent 1px),
+      var(--charcoal);
+    background-size:42px 42px, 42px 42px, auto;
+    padding:13vh 7vw;
+  }
+  .process .section-head .eyebrow{ color:var(--orange); }
+  .process .section-head h2{ color:var(--cream); }
+
+  .steps{ max-width:980px; margin:0 auto; display:grid; grid-template-columns:repeat(4, 1fr); gap:28px; position:relative; }
+  @media (max-width:860px){ .steps{ grid-template-columns:1fr; gap:0; } }
+
+  .step{ position:relative; padding-top:22px; border-top:1px solid var(--line-dark); }
+  @media (max-width:860px){
+    .step{ border-top:none; border-left:1px solid var(--line-dark); padding:0 0 36px 24px; margin-left:6px; }
+    .step:last-child{ padding-bottom:0; }
+  }
+  .step-num{ font-family:'JetBrains Mono', monospace; font-size:0.78rem; color:var(--orange); margin-bottom:12px; display:block; }
+  .step h3{ font-family:'Oswald', sans-serif; font-size:0.98rem; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:10px; color:var(--cream); }
+  .step p{ font-size:0.88rem; line-height:1.6; color:var(--muted); }
+
+  /* ---------- CONTACT (light) ---------- */
+  .contact{ background:var(--sand); color:var(--ink); padding:13vh 7vw; text-align:center; }
+  .contact .eyebrow{ color:var(--steel); }
+  .contact h2{ font-family:'Archivo Black', sans-serif; font-size:clamp(1.8rem, 5vw, 2.5rem); margin:10px 0 10px 0; }
+  .contact .sub{ color:var(--muted-2); margin-bottom:46px; font-size:1rem; max-width:46ch; margin-left:auto; margin-right:auto; }
+
+  .contact-card{ max-width:440px; margin:0 auto 38px auto; background:var(--charcoal-2); padding:32px 28px; border:1px solid var(--line-dark); text-align:left; }
+  .contact-row{ display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--line-dark); }
+  .contact-row:last-child{ border-bottom:none; }
+  .contact-row .label{ font-family:'Oswald', sans-serif; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted-2); }
+  .contact-row .value{ font-family:'JetBrains Mono', monospace; font-size:1rem; color:var(--cream); text-align:right; }
+  .contact .cta-group{ justify-content:center; }
+
+  @media (max-width:560px){
+    .contact-row{ flex-direction:column; align-items:flex-start; gap:4px; }
+    .contact-row .value{ text-align:left; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--charcoal); color:var(--muted-2); padding:30px 7vw; border-top:1px solid var(--line-dark); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  footer .fcopy{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.03em; }
+  footer .flinks{ display:flex; gap:22px; }
+  footer .flinks a{ font-family:'Oswald', sans-serif; font-size:0.74rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted-2); }
+  footer .flinks a:hover{ color:var(--cream); }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-brand">
+      <div class="nav-mark">AK</div>
+      <div class="nav-name">ARSHAD KHAN<small>CONSTRUCTION BUILDER</small></div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a class="btn btn-primary" href="tel:+923315240753">Call Now</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="status-pill"><span class="dot"></span> AVAILABLE FOR NEW PROJECTS</span>
+        <p class="eyebrow">PESHAWAR · SHABQADAR</p>
+        <h1>ARSHAD<br>KHAN</h1>
+        <p class="role">Construction Builder</p>
+        <p class="tagline">Building structures that last — from foundation to finish, with hands-on site supervision at every stage.</p>
+        <div class="cta-group">
+          <a class="btn btn-primary" href="tel:+923315240753">Call Now</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/923348422861" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div class="titleblock crop">
+        <div class="tb-head">Builder Profile</div>
+        <div class="tb-row"><span>Name</span><strong>Arshad Khan</strong></div>
+        <div class="tb-row"><span>Role</span><strong>Construction Builder</strong></div>
+        <div class="tb-row"><span>Base</span><strong>Shabqadar, Peshawar</strong></div>
+        <div class="tb-row"><span>Status</span><strong class="status">● Available</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="light-section" id="about">
+    <div class="section-head">
+      <p class="eyebrow">About</p>
+      <h2>Hands-on building, start to finish.</h2>
+    </div>
+    <div class="about-row reveal" id="about-text">
+      <p>Arshad Khan is a construction builder based in Shabqadar, Peshawar, handling residential and commercial projects from groundwork to handover. Known locally for reliable timelines and direct, hands-on site supervision, he works closely with clients through every stage of the build — not just at the start and end.</p>
+    </div>
+
+    <div class="section-head" id="services" style="margin-bottom:0;">
+      <p class="eyebrow">Services</p>
+      <h2>What I do on site.</h2>
+    </div>
+  </section>
+
+  <section class="light-section" style="padding-top:0;">
+    <div class="services-grid">
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11.5L12 4l9 7.5"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/><path d="M9.5 20v-5a1 1 0 011-1h3a1 1 0 011 1v5"/></svg>
+        <h3>Residential Construction</h3>
+        <p>New homes and additions built to last, managed from groundwork to handover.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a4 4 0 00-5.6 5.2L3 17.6V21h3.4l6.1-6.1a4 4 0 005.2-5.6l-2.6 2.6-2-2 2.6-2.6z"/></svg>
+        <h3>Renovation &amp; Repair</h3>
+        <p>Structural repairs, extensions and upgrades for existing homes and commercial spaces.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="4" width="14" height="17" rx="1.5"/><path d="M9 3.5h6a1 1 0 011 1V6H8V4.5a1 1 0 011-1z"/><path d="M8.5 13l2 2 4.5-4.5"/></svg>
+        <h3>Site Supervision</h3>
+        <p>Day-to-day, hands-on oversight to keep work on schedule and to standard.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="section-head">
+      <p class="eyebrow">Process</p>
+      <h2>How a project runs.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="step-num">01</span><h3>Consultation</h3><p>Site visit and discussion to understand the project and requirements.</p></div>
+      <div class="step"><span class="step-num">02</span><h3>Planning &amp; Estimate</h3><p>Materials, timeline and cost estimate prepared before work begins.</p></div>
+      <div class="step"><span class="step-num">03</span><h3>Construction</h3><p>On-site work begins, with direct supervision at every stage.</p></div>
+      <div class="step"><span class="step-num">04</span><h3>Handover</h3><p>Final walkthrough, quality check, and project handover.</p></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <p class="eyebrow">Contact</p>
+    <h2>Get In Touch</h2>
+    <p class="sub">Available for new projects in Peshawar &amp; surrounding areas.</p>
+    <div class="contact-card crop on-light">
+      <div class="contact-row"><span class="label">Phone</span><span class="value">0331 5240753</span></div>
+      <div class="contact-row"><span class="label">Phone (WhatsApp)</span><span class="value">0334 8422861</span></div>
+      <div class="contact-row"><span class="label">Location</span><span class="value">Shabqadar, Peshawar</span></div>
+    </div>
+    <div class="cta-group">
+      <a class="btn btn-primary" href="tel:+923315240753">Call Now</a>
+      <a class="btn btn-whatsapp" href="https://wa.me/923348422861" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fcopy">© 2026 Arshad Khan · Construction Builder</div>
+    <div class="flinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    const el = document.getElementById('about-text');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { el.classList.add('visible'); observer.disconnect(); }
+      });
+    }, { threshold: 0.2 });
+    observer.observe(el);
+  </script>
+
+</body>
+</html>
